@@ -9,7 +9,7 @@
 
 set -Eeuo pipefail
 
-# Input and Output
+# Input and Output edit
 RAPTOR_BINARY="/srv/public/leonard/raptor/build/bin/raptor"
 INPUT_DIR="/srv/data/seiler/simulation" # output directory of simulation. the directory that contains the BIN_COUNT directory
 OUTPUT_DIR="/srv/data/leonard/test_run" # benchmark out will be generated here
