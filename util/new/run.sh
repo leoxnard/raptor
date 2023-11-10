@@ -10,9 +10,9 @@
 set -Eeuo pipefail
 
 # Input and Output
-RAPTOR_BINARY="<absolute path to raptor binary>"
-INPUT_DIR="<absolute path>" # output directory of simulation. the directory that contains the BIN_COUNT directory
-OUTPUT_DIR="<absolute path>" # benchmark out will be generated here
+RAPTOR_BINARY="/srv/public/leonard/raptor/build/bin/raptor"
+INPUT_DIR="/srv/data/seiler/simulation" # output directory of simulation. the directory that contains the BIN_COUNT directory
+OUTPUT_DIR="/srv/data/leonard/test_run" # benchmark out will be generated here
 
 mkdir -p ${OUTPUT_DIR} # Create OUTPUT_DIR if it does not exist.
 
