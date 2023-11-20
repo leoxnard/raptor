@@ -1,0 +1,109 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+check_input_files              2
+check_output_dir               1
+check_raptor_binary            1
+raptor_build_withLayout       16
+raptor_layout                 16
+raptor_search                 16
+total                         53
+
+Select jobs to execute...
+
+[Mon Nov 20 20:09:03 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout
+    jobid: 6
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=1024
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout.
+[Mon Nov 20 20:09:05 2023]
+Finished job 6.
+1 of 53 steps (2%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:09:05 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_withLayout_build
+    jobid: 5
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=1024
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_withLayout_build.
+[Mon Nov 20 20:09:34 2023]
+Finished job 5.
+2 of 53 steps (4%) done
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:09:34 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout
+    jobid: 22
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout
+    wildcards: kmerSize=32, windowSize=35, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout.
+[Mon Nov 20 20:09:35 2023]
+Finished job 22.
+3 of 53 steps (6%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:09:35 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build
+    jobid: 21
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout
+    wildcards: kmerSize=32, windowSize=35, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build.
+[Mon Nov 20 20:09:47 2023]
+Finished job 21.
+4 of 53 steps (8%) done
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:09:47 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/kmer_35/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_3/2048_layout
+    jobid: 40
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_35/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_3/2048_layout
+    wildcards: kmerSize=35, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=3, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+[Mon Nov 20 20:09:47 2023]
+Error in rule raptor_layout:
+    jobid: 40
+    output: /srv/data/leonard/test_run/kmer_35/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_3/2048_layout
+    shell:
+        
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor layout for 2048 bins."
+        relaxed_fpr=$(echo "0-3" | sed 's/-/./g')
+        maximum_fpr=$(echo "0-05" | sed 's/-/./g')
+        # Raptor layout doesn't provide `--timing-output`, so we use /usr/bin/time with a custom format
+        /usr/bin/time -o /srv/data/leonard/test_run/kmer_35/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_3/2048.layout.time -f "wall_clock_time_in_seconds	peak_memory_usage_in_kibibytes
+%e	%M"         /srv/public/leonard/raptor/build/bin/raptor layout --input /srv/data/seiler/simulation/2048.filenames                                 --output /srv/data/leonard/test_run/kmer_35/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_3/2048.layout                                 --kmer 35                                 --fpr $maximum_fpr                                 --relaxed-fpr $relaxed_fpr                                 --hash 3                                 --disable-estimate-union                                 --disable-rearrangement                                 --threads 32
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-11-20T200902.005545.snakemake.log

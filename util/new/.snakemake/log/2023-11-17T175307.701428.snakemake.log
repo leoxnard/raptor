@@ -1,0 +1,110 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                       count
+----------------------  -------
+all                           1
+check_output_directory        1
+check_raptor_binary           1
+run_input                     4
+total                         7
+
+Select jobs to execute...
+
+[Fri Nov 17 17:53:08 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemakes/2048.out
+    jobid: 4
+    reason: Missing output files: /srv/data/leonard/test_run_snakemakes/2048.out
+    wildcards: bin_count=2048
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemakes/2048.out.
+[Fri Nov 17 17:53:08 2023]
+Finished job 4.
+1 of 7 steps (14%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:53:08 2023]
+rule check_raptor_binary:
+    output: raptor_binary_checked
+    jobid: 2
+    reason: Missing output files: raptor_binary_checked
+    resources: tmpdir=/tmp
+
+Touching output file raptor_binary_checked.
+[Fri Nov 17 17:53:08 2023]
+Finished job 2.
+2 of 7 steps (29%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:53:08 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemakes/4096.out
+    jobid: 5
+    reason: Missing output files: /srv/data/leonard/test_run_snakemakes/4096.out
+    wildcards: bin_count=4096
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemakes/4096.out.
+[Fri Nov 17 17:53:08 2023]
+Finished job 5.
+3 of 7 steps (43%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:53:08 2023]
+rule check_output_directory:
+    output: output_checked
+    jobid: 1
+    reason: Missing output files: output_checked
+    resources: tmpdir=/tmp
+
+Touching output file output_checked.
+[Fri Nov 17 17:53:08 2023]
+Finished job 1.
+4 of 7 steps (57%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:53:08 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemakes/1024.out
+    jobid: 3
+    reason: Missing output files: /srv/data/leonard/test_run_snakemakes/1024.out
+    wildcards: bin_count=1024
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemakes/1024.out.
+[Fri Nov 17 17:53:08 2023]
+Finished job 3.
+5 of 7 steps (71%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:53:08 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemakes/8192.out
+    jobid: 6
+    reason: Missing output files: /srv/data/leonard/test_run_snakemakes/8192.out
+    wildcards: bin_count=8192
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemakes/8192.out.
+[Fri Nov 17 17:53:08 2023]
+Finished job 6.
+6 of 7 steps (86%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:53:08 2023]
+localrule all:
+    input: output_checked, raptor_binary_checked, /srv/data/leonard/test_run_snakemakes/1024.out, /srv/data/leonard/test_run_snakemakes/2048.out, /srv/data/leonard/test_run_snakemakes/4096.out, /srv/data/leonard/test_run_snakemakes/8192.out
+    jobid: 0
+    reason: Input files updated by another job: /srv/data/leonard/test_run_snakemakes/1024.out, /srv/data/leonard/test_run_snakemakes/4096.out, raptor_binary_checked, output_checked, /srv/data/leonard/test_run_snakemakes/2048.out, /srv/data/leonard/test_run_snakemakes/8192.out
+    resources: tmpdir=/tmp
+
+[Fri Nov 17 17:53:08 2023]
+Finished job 0.
+7 of 7 steps (100%) done
+Removing temporary output output_checked.
+Removing temporary output raptor_binary_checked.
+Complete log: .snakemake/log/2023-11-17T175307.701428.snakemake.log

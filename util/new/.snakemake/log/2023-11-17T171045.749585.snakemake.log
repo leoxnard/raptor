@@ -1,0 +1,8 @@
+Building DAG of jobs...
+MissingInputException in rule all in file /srv/public/leonard/raptor/util/new/Snakefile, line 1:
+Missing input files for rule all:
+    affected files:
+        /srv/data/leonard/test_run_snakemake/4096.out
+        /srv/data/leonard/test_run_snakemake/2048.out
+        /srv/data/leonard/test_run_snakemake/1024.out
+        /srv/data/leonard/test_run_snakemake/8192.out

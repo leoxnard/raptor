@@ -1,0 +1,37 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count
+-------------------  -------
+all                        1
+check_input_files          4
+check_output_dir           1
+check_raptor_binary        1
+run_input                  4
+total                     11
+
+Select jobs to execute...
+
+[Fri Nov 17 18:31:40 2023]
+rule check_input_files:
+    output: input_file_8192_checked
+    jobid: 10
+    reason: Missing output files: input_file_8192_checked
+    wildcards: BIN_COUNT=8192
+    resources: tmpdir=/tmp
+
+RuleException in rule check_input_files in file /srv/public/leonard/raptor/util/new/Snakefile, line 59:
+NameError: The name 'BIN_COUNT' is unknown in this context. Did you mean 'wildcards.BIN_COUNT'?, when formatting the following:
+
+        if ! [[ -s {INPUT_DIR}/{BIN_COUNT}.filenames ]]; then
+            echo "Input file {INPUT_DIR}/{BIN_COUNT}.filenames does not exist. Exiting."
+            exit 1
+        fi
+        if ! [[ -s {INPUT_DIR}/{BIN_COUNT}/reads_e{QUERY_ERRORS}_{QUERY_LENGTH}/all.fastq ]]; then
+            echo "Input file {INPUT_DIR}/{BIN_COUNT}/reads_e{QUERY_ERRORS}_{QUERY_LENGTH}/all.fastq does not exist. Exiting."
+            exit 1
+        fi
+        touch {output}
+        

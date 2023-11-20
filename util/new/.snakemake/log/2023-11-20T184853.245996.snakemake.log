@@ -1,0 +1,3 @@
+TypeError in file /srv/public/leonard/raptor/util/new/Snakefile, line 13:
+'float' object is not iterable
+  File "/srv/public/leonard/raptor/util/new/Snakefile", line 13, in <module>

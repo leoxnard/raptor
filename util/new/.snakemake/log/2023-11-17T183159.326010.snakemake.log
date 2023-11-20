@@ -1,0 +1,179 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count
+-------------------  -------
+all                        1
+check_input_files          4
+check_output_dir           1
+check_raptor_binary        1
+run_input                  4
+total                     11
+
+Select jobs to execute...
+
+[Fri Nov 17 18:31:59 2023]
+rule check_input_files:
+    output: input_file_8192_checked
+    jobid: 10
+    reason: Missing output files: input_file_8192_checked
+    wildcards: BIN_COUNT=8192
+    resources: tmpdir=/tmp
+
+Touching output file input_file_8192_checked.
+[Fri Nov 17 18:31:59 2023]
+Finished job 10.
+1 of 11 steps (9%) done
+Select jobs to execute...
+
+[Fri Nov 17 18:31:59 2023]
+rule check_output_dir:
+    output: output_checked
+    jobid: 3
+    reason: Missing output files: output_checked; Code has changed since last execution
+    resources: tmpdir=/tmp
+
+Touching output file output_checked.
+[Fri Nov 17 18:31:59 2023]
+Finished job 3.
+2 of 11 steps (18%) done
+Select jobs to execute...
+
+[Fri Nov 17 18:31:59 2023]
+rule check_input_files:
+    output: input_file_1024_checked
+    jobid: 4
+    reason: Missing output files: input_file_1024_checked
+    wildcards: BIN_COUNT=1024
+    resources: tmpdir=/tmp
+
+Touching output file input_file_1024_checked.
+[Fri Nov 17 18:31:59 2023]
+Finished job 4.
+3 of 11 steps (27%) done
+Select jobs to execute...
+
+[Fri Nov 17 18:31:59 2023]
+rule check_input_files:
+    output: input_file_2048_checked
+    jobid: 6
+    reason: Missing output files: input_file_2048_checked
+    wildcards: BIN_COUNT=2048
+    resources: tmpdir=/tmp
+
+Touching output file input_file_2048_checked.
+[Fri Nov 17 18:31:59 2023]
+Finished job 6.
+4 of 11 steps (36%) done
+Select jobs to execute...
+
+[Fri Nov 17 18:32:00 2023]
+rule check_raptor_binary:
+    output: raptor_binary_checked
+    jobid: 2
+    reason: Missing output files: raptor_binary_checked
+    resources: tmpdir=/tmp
+
+Touching output file raptor_binary_checked.
+[Fri Nov 17 18:32:00 2023]
+Finished job 2.
+5 of 11 steps (45%) done
+Select jobs to execute...
+
+[Fri Nov 17 18:32:00 2023]
+rule run_input:
+    input: raptor_binary_checked, output_checked, input_file_2048_checked
+    output: /srv/data/leonard/test_run/2048.out
+    jobid: 5
+    reason: Input files updated by another job: input_file_2048_checked, output_checked, raptor_binary_checked
+    wildcards: BIN_COUNT=2048
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/2048.out.
+[Fri Nov 17 18:32:00 2023]
+Finished job 5.
+6 of 11 steps (55%) done
+Removing temporary output input_file_2048_checked.
+Select jobs to execute...
+
+[Fri Nov 17 18:32:00 2023]
+rule run_input:
+    input: raptor_binary_checked, output_checked, input_file_1024_checked
+    output: /srv/data/leonard/test_run/1024.out
+    jobid: 1
+    reason: Input files updated by another job: input_file_1024_checked, output_checked, raptor_binary_checked
+    wildcards: BIN_COUNT=1024
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/1024.out.
+[Fri Nov 17 18:32:00 2023]
+Finished job 1.
+7 of 11 steps (64%) done
+Removing temporary output input_file_1024_checked.
+Select jobs to execute...
+
+[Fri Nov 17 18:32:00 2023]
+rule check_input_files:
+    output: input_file_4096_checked
+    jobid: 8
+    reason: Missing output files: input_file_4096_checked
+    wildcards: BIN_COUNT=4096
+    resources: tmpdir=/tmp
+
+Touching output file input_file_4096_checked.
+[Fri Nov 17 18:32:00 2023]
+Finished job 8.
+8 of 11 steps (73%) done
+Select jobs to execute...
+
+[Fri Nov 17 18:32:00 2023]
+rule run_input:
+    input: raptor_binary_checked, output_checked, input_file_8192_checked
+    output: /srv/data/leonard/test_run/8192.out
+    jobid: 9
+    reason: Input files updated by another job: input_file_8192_checked, output_checked, raptor_binary_checked
+    wildcards: BIN_COUNT=8192
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/8192.out.
+[Fri Nov 17 18:32:00 2023]
+Finished job 9.
+9 of 11 steps (82%) done
+Removing temporary output input_file_8192_checked.
+Select jobs to execute...
+
+[Fri Nov 17 18:32:00 2023]
+rule run_input:
+    input: raptor_binary_checked, output_checked, input_file_4096_checked
+    output: /srv/data/leonard/test_run/4096.out
+    jobid: 7
+    reason: Input files updated by another job: input_file_4096_checked, output_checked, raptor_binary_checked
+    wildcards: BIN_COUNT=4096
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/4096.out.
+[Fri Nov 17 18:32:00 2023]
+Finished job 7.
+10 of 11 steps (91%) done
+Removing temporary output raptor_binary_checked.
+Removing temporary output output_checked.
+Removing temporary output input_file_4096_checked.
+Select jobs to execute...
+
+[Fri Nov 17 18:32:00 2023]
+localrule all:
+    input: /srv/data/leonard/test_run/1024.out, /srv/data/leonard/test_run/2048.out, /srv/data/leonard/test_run/4096.out, /srv/data/leonard/test_run/8192.out
+    jobid: 0
+    reason: Input files updated by another job: /srv/data/leonard/test_run/8192.out, /srv/data/leonard/test_run/2048.out, /srv/data/leonard/test_run/4096.out, /srv/data/leonard/test_run/1024.out
+    resources: tmpdir=/tmp
+
+[Fri Nov 17 18:32:00 2023]
+Finished job 0.
+11 of 11 steps (100%) done
+Removing temporary output /srv/data/leonard/test_run/1024.out.
+Removing temporary output /srv/data/leonard/test_run/2048.out.
+Removing temporary output /srv/data/leonard/test_run/4096.out.
+Removing temporary output /srv/data/leonard/test_run/8192.out.
+Complete log: .snakemake/log/2023-11-17T183159.326010.snakemake.log

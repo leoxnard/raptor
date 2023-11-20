@@ -1,0 +1,280 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+check_input_files              4
+check_output_dir               1
+check_raptor_binary            1
+raptor_build_withLayout        3
+raptor_layout                  3
+raptor_search                  4
+total                         17
+
+Select jobs to execute...
+
+[Mon Nov 20 20:17:27 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_layout
+    jobid: 14
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=4096
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_layout.
+[Mon Nov 20 20:17:28 2023]
+Finished job 14.
+1 of 17 steps (6%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:17:28 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_layout
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_withLayout_build
+    jobid: 13
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=4096
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_withLayout_build.
+[Mon Nov 20 20:17:58 2023]
+Finished job 13.
+2 of 17 steps (12%) done
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:17:58 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_layout
+    jobid: 18
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=8192
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_layout.
+[Mon Nov 20 20:18:02 2023]
+Finished job 18.
+3 of 17 steps (18%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:18:02 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_layout
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_withLayout_build
+    jobid: 17
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=8192
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_withLayout_build.
+[Mon Nov 20 20:18:18 2023]
+Finished job 17.
+4 of 17 steps (24%) done
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:18:18 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout
+    jobid: 10
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout.
+[Mon Nov 20 20:18:19 2023]
+Finished job 10.
+5 of 17 steps (29%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:18:19 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build
+    jobid: 9
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build.
+[Mon Nov 20 20:18:48 2023]
+Finished job 9.
+6 of 17 steps (35%) done
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:18:48 2023]
+rule check_output_dir:
+    output: output_checked
+    jobid: 3
+    reason: Missing output files: output_checked
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:18:48 2023]
+rule check_raptor_binary:
+    output: raptor_binary_checked
+    jobid: 2
+    reason: Missing output files: raptor_binary_checked
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:18:48 2023]
+rule check_input_files:
+    output: input_file_2048_checked
+    jobid: 8
+    reason: Missing output files: input_file_2048_checked
+    wildcards: binCount=2048
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:18:49 2023]
+rule check_input_files:
+    output: input_file_1024_checked
+    jobid: 4
+    reason: Missing output files: input_file_1024_checked
+    wildcards: binCount=1024
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:18:49 2023]
+rule check_input_files:
+    output: input_file_4096_checked
+    jobid: 12
+    reason: Missing output files: input_file_4096_checked
+    wildcards: binCount=4096
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:18:49 2023]
+rule check_input_files:
+    output: input_file_8192_checked
+    jobid: 16
+    reason: Missing output files: input_file_8192_checked
+    wildcards: binCount=8192
+    resources: tmpdir=/tmp
+
+Touching output file output_checked.
+[Mon Nov 20 20:18:49 2023]
+Finished job 3.
+7 of 17 steps (41%) done
+Touching output file input_file_2048_checked.
+[Mon Nov 20 20:18:49 2023]
+Finished job 8.
+8 of 17 steps (47%) done
+Touching output file input_file_1024_checked.
+[Mon Nov 20 20:18:49 2023]
+Finished job 4.
+9 of 17 steps (53%) done
+Touching output file input_file_4096_checked.
+[Mon Nov 20 20:18:49 2023]
+Finished job 12.
+10 of 17 steps (59%) done
+Touching output file input_file_8192_checked.
+[Mon Nov 20 20:18:49 2023]
+Finished job 16.
+11 of 17 steps (65%) done
+Touching output file raptor_binary_checked.
+[Mon Nov 20 20:18:49 2023]
+Finished job 2.
+12 of 17 steps (71%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:18:49 2023]
+rule raptor_search:
+    input: raptor_binary_checked, output_checked, input_file_2048_checked, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_search
+    jobid: 7
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_search; Input files updated by another job: output_checked, raptor_binary_checked, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build, input_file_2048_checked
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_search.
+[Mon Nov 20 20:18:53 2023]
+Finished job 7.
+13 of 17 steps (76%) done
+Removing temporary output input_file_2048_checked.
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_withLayout_build.
+Select jobs to execute...
+
+[Mon Nov 20 20:18:53 2023]
+rule raptor_search:
+    input: raptor_binary_checked, output_checked, input_file_8192_checked, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_withLayout_build
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_search
+    jobid: 15
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_search; Input files updated by another job: output_checked, raptor_binary_checked, input_file_8192_checked, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_withLayout_build
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=8192
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_search.
+[Mon Nov 20 20:18:58 2023]
+Finished job 15.
+14 of 17 steps (82%) done
+Removing temporary output input_file_8192_checked.
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_withLayout_build.
+Select jobs to execute...
+
+[Mon Nov 20 20:18:58 2023]
+rule raptor_search:
+    input: raptor_binary_checked, output_checked, input_file_1024_checked, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_withLayout_build
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_search
+    jobid: 1
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_search; Input files updated by another job: output_checked, raptor_binary_checked, input_file_1024_checked
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=1024
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_search.
+[Mon Nov 20 20:19:02 2023]
+Finished job 1.
+15 of 17 steps (88%) done
+Removing temporary output input_file_1024_checked.
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_withLayout_build.
+Select jobs to execute...
+
+[Mon Nov 20 20:19:02 2023]
+rule raptor_search:
+    input: raptor_binary_checked, output_checked, input_file_4096_checked, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_withLayout_build
+    output: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_search
+    jobid: 11
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_search; Input files updated by another job: output_checked, raptor_binary_checked, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_withLayout_build, input_file_4096_checked
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=4096
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_search.
+[Mon Nov 20 20:19:06 2023]
+Finished job 11.
+16 of 17 steps (94%) done
+Removing temporary output raptor_binary_checked.
+Removing temporary output output_checked.
+Removing temporary output input_file_4096_checked.
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_withLayout_build.
+Select jobs to execute...
+
+[Mon Nov 20 20:19:06 2023]
+localrule all:
+    input: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_search, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_search, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_search, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_search
+    jobid: 0
+    reason: Input files updated by another job: /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_search, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_search, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_search, /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_search
+    resources: tmpdir=/tmp
+
+[Mon Nov 20 20:19:06 2023]
+Finished job 0.
+17 of 17 steps (100%) done
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_search.
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/2048_search.
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/4096_search.
+Removing temporary output /srv/data/leonard/test_run/kmer_32/windowSize_32/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/8192_search.
+Complete log: .snakemake/log/2023-11-20T201725.639763.snakemake.log

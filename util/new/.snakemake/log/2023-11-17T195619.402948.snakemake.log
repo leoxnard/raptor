@@ -1,0 +1,121 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count
+-------------------  -------
+all                        1
+check_input_files          4
+check_output_dir           1
+check_raptor_binary        1
+run_raptor                 4
+total                     11
+
+Select jobs to execute...
+
+[Fri Nov 17 19:56:20 2023]
+rule check_input_files:
+    output: input_file_8192_checked
+    jobid: 10
+    reason: Missing output files: input_file_8192_checked
+    wildcards: bin_count=8192
+    resources: tmpdir=/tmp
+
+Touching output file input_file_8192_checked.
+[Fri Nov 17 19:56:20 2023]
+Finished job 10.
+1 of 11 steps (9%) done
+Select jobs to execute...
+
+[Fri Nov 17 19:56:21 2023]
+rule check_input_files:
+    output: input_file_1024_checked
+    jobid: 4
+    reason: Missing output files: input_file_1024_checked
+    wildcards: bin_count=1024
+    resources: tmpdir=/tmp
+
+Touching output file input_file_1024_checked.
+[Fri Nov 17 19:56:21 2023]
+Finished job 4.
+2 of 11 steps (18%) done
+Select jobs to execute...
+
+[Fri Nov 17 19:56:21 2023]
+rule check_output_dir:
+    output: output_checked
+    jobid: 3
+    reason: Missing output files: output_checked
+    resources: tmpdir=/tmp
+
+Touching output file output_checked.
+[Fri Nov 17 19:56:21 2023]
+Finished job 3.
+3 of 11 steps (27%) done
+Select jobs to execute...
+
+[Fri Nov 17 19:56:21 2023]
+rule check_input_files:
+    output: input_file_4096_checked
+    jobid: 8
+    reason: Missing output files: input_file_4096_checked
+    wildcards: bin_count=4096
+    resources: tmpdir=/tmp
+
+Touching output file input_file_4096_checked.
+[Fri Nov 17 19:56:21 2023]
+Finished job 8.
+4 of 11 steps (36%) done
+Select jobs to execute...
+
+[Fri Nov 17 19:56:21 2023]
+rule check_input_files:
+    output: input_file_2048_checked
+    jobid: 6
+    reason: Missing output files: input_file_2048_checked
+    wildcards: bin_count=2048
+    resources: tmpdir=/tmp
+
+Touching output file input_file_2048_checked.
+[Fri Nov 17 19:56:21 2023]
+Finished job 6.
+5 of 11 steps (45%) done
+Select jobs to execute...
+
+[Fri Nov 17 19:56:21 2023]
+rule check_raptor_binary:
+    output: raptor_binary_checked
+    jobid: 2
+    reason: Missing output files: raptor_binary_checked
+    resources: tmpdir=/tmp
+
+Touching output file raptor_binary_checked.
+[Fri Nov 17 19:56:21 2023]
+Finished job 2.
+6 of 11 steps (55%) done
+Select jobs to execute...
+
+[Fri Nov 17 19:56:21 2023]
+rule run_raptor:
+    input: raptor_binary_checked, output_checked, input_file_8192_checked
+    output: /srv/data/leonard/test_run/8192.out
+    jobid: 9
+    reason: Missing output files: /srv/data/leonard/test_run/8192.out; Input files updated by another job: input_file_8192_checked, output_checked, raptor_binary_checked; Code has changed since last execution; Params have changed since last execution
+    wildcards: bin_count=8192
+    resources: tmpdir=/tmp
+
+RuleException in rule run_raptor in file /srv/public/leonard/raptor/util/new/Snakefile, line 58:
+NameError: The name 'BIN_COUNT' is unknown in this context. Please make sure that you defined that variable. Also note that braces not used for variable access have to be escaped by repeating them, i.e. {{print $1}}, when formatting the following:
+
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor layout for ${BIN_COUNT} bins."
+        # Raptor layout doesn't provide `--timing-output`, so we use /usr/bin/time with a custom format
+        /usr/bin/time -o {LAYOUT_TIME} -f "wall_clock_time_in_seconds	peak_memory_usage_in_kibibytes
+%e	%M"         ${RAPTOR_BINARY} layout --input {INPUT_DIR}/${BIN_COUNT}.filenames                                 --output {LAYOUT_FILE}                                 --kmer {KMER_SIZE}                                 --fpr {MAXIMUM_FPR}                                 --relaxed-fpr {RELAXED_FPR}                                 --hash {NUM_HASHES}                                 --disable-estimate-union                                 --disable-rearrangement                                 --threads {NUM_THREADS}
+
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor build for ${BIN_COUNT} bins."
+        ${RAPTOR_BINARY} build  --input ${LAYOUT_FILE}                                 --output ${INDEX_FILE}                                 --window ${WINDOW_SIZE}                                 --quiet                                 --timing-output ${INDEX_TIME}                                 --threads ${NUM_THREADS}
+
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor search for ${BIN_COUNT} bins."
+        ${RAPTOR_BINARY} search --index ${INDEX_FILE}                                 --query ${INPUT_DIR}/${BIN_COUNT}/reads_e${QUERY_ERRORS}_${QUERY_LENGTH}/all.fastq                                 --output ${RESULT_FILE}                                 --error ${QUERY_ERRORS}                                 --query_length ${QUERY_LENGTH}                                 --quiet                                 --timing-output ${RESULT_TIME}                                 --threads ${NUM_THREADS}
+        

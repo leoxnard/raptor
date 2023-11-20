@@ -1,0 +1,165 @@
+configfile: "/srv/public/leonard/raptor/util/new/parameters.yaml"
+
+rule all:
+    input:
+        expand(f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}_search',
+                                kmerSize=config["RAPTOR_CONFIG"]["KMER_SIZE"],
+                                windowSize=config["RAPTOR_CONFIG"]["WINDOW_SIZE"],
+                                maximumFPR=[str(fpr).replace('.', '-') for fpr in config["RAPTOR_CONFIG"]["MAXIMUM_FPR"]],
+                                relaxedFPR=[str(fpr).replace('.', '-') for fpr in config["RAPTOR_CONFIG"]["RELAXED_FPR"]],
+                                numHashes=config["RAPTOR_CONFIG"]["NUM_HASHES"],
+                                binCount=[2**exp for exp in range(config["BIN_COUNT_RANGE"]["MIN_EXPONENT"], config["BIN_COUNT_RANGE"]["MAX_EXPONENT"] + 1)])
+
+rule check_output_dir:
+    output:
+        temp(touch('output_checked'))
+    params:
+        OUTPUT_DIR = config["OUTPUT_DIR"]
+    shell:
+        """
+        if ! [[ -d {params.OUTPUT_DIR} ]]; then
+            echo "Directory {params.OUTPUT_DIR} does not exist. Exiting."
+        fi
+        touch {output}
+        """
+
+rule check_raptor_binary:
+    output:
+        temp(touch('raptor_binary_checked'))
+    params:
+        RAPTOR_BINARY = config["RAPTOR_BINARY"]
+    shell:
+        """
+        if ! [[ -s {params.RAPTOR_BINARY} ]]; then
+            echo "Executable {params.RAPTOR_BINARY} does not exist. Exiting."
+            exit 1
+        fi
+        if ! {params.RAPTOR_BINARY} --help &> /dev/null; then
+            echo "Executable {params.RAPTOR_BINARY} cannot be run. Exiting."
+            exit 1
+        fi
+        touch {output}
+        """
+
+rule check_input_files:
+    output:
+        temp(touch('input_file_{binCount}_checked'))
+    params:
+        INPUT_DIR = config["INPUT_DIR"],
+        QUERY_ERRORS = config["DEFAULT_READ_CONFIG"]["QUERY_ERRORS"],
+        QUERY_LENGTH = config["DEFAULT_READ_CONFIG"]["QUERY_LENGTH"]
+    shell:
+        """
+        if ! [[ -s {params.INPUT_DIR}/{wildcards.binCount}.filenames ]]; then
+            echo "Input file {params.INPUT_DIR}/{wildcards.binCount}.filenames does not exist. Exiting."
+            exit 1
+        fi
+        if ! [[ -s {params.INPUT_DIR}/{wildcards.binCount}/reads_e{params.QUERY_ERRORS}_{params.QUERY_LENGTH}/all.fastq ]]; then
+            echo "Input file {params.INPUT_DIR}/{wildcards.binCount}/reads_e{params.QUERY_ERRORS}_{params.QUERY_LENGTH}/all.fastq does not exist. Exiting."
+            exit 1
+        fi
+        touch {output}
+        """
+
+rule raptor_layout:
+    output:
+        temp(touch(f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}_layout'))
+    threads:
+        config["RAPTOR_CONFIG"]["NUM_THREADS"]
+    params:
+        RAPTOR_BINARY = config["RAPTOR_BINARY"],
+        INPUT_DIR = config["INPUT_DIR"],
+        LAYOUT_FILE = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.layout',
+        LAYOUT_TIME = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.layout.time',
+    shell:
+        """
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor layout for {wildcards.binCount} bins."
+        relaxed_fpr=$(echo "{wildcards.relaxedFPR}" | sed 's/-/./g')
+        maximum_fpr=$(echo "{wildcards.maximumFPR}" | sed 's/-/./g')
+        # Raptor layout doesn't provide `--timing-output`, so we use /usr/bin/time with a custom format
+        /usr/bin/time -o {params.LAYOUT_TIME} -f "wall_clock_time_in_seconds\tpeak_memory_usage_in_kibibytes\n%e\t%M" \
+        {params.RAPTOR_BINARY} layout --input {params.INPUT_DIR}/{wildcards.binCount}.filenames \
+                                --output {params.LAYOUT_FILE} \
+                                --kmer {wildcards.kmerSize} \
+                                --fpr $maximum_fpr \
+                                --relaxed-fpr $relaxed_fpr \
+                                --hash {wildcards.numHashes} \
+                                --disable-estimate-union \
+                                --disable-rearrangement \
+                                --threads {threads}
+        """
+
+rule raptor_build_withLayout:
+    input:
+        f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}_layout'
+    output:
+        temp(touch(f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}_withLayout_build'))
+    threads:
+        config["RAPTOR_CONFIG"]["NUM_THREADS"]
+    params:
+        RAPTOR_BINARY = config["RAPTOR_BINARY"],
+        LAYOUT_FILE = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.layout',
+        INDEX_FILE = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.index',
+        INDEX_TIME = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.index.time',
+    shell:
+        """
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor build for {wildcards.binCount} bins with running Layout."
+        {params.RAPTOR_BINARY} build  --input {params.LAYOUT_FILE} \
+                                --output {params.INDEX_FILE} \
+                                --window {wildcards.windowSize} \
+                                --quiet \
+                                --timing-output {params.INDEX_TIME} \
+                                --threads {threads}
+        """
+
+rule raptor_build_withoutLayout:
+    output:
+        temp(touch(f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}_noLayout_build'))
+    threads:
+        config["RAPTOR_CONFIG"]["NUM_THREADS"]
+    params:
+        RAPTOR_BINARY = config["RAPTOR_BINARY"],
+        INPUT_DIR = config["INPUT_DIR"],
+        INDEX_FILE = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.index',
+        INDEX_TIME = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.index.time',
+    shell:
+        """
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor build for {wildcards.binCount} bins without running Layout."
+        {params.RAPTOR_BINARY} build --input {params.INPUT_DIR}/{wildcards.binCount}.filenames \
+                                --output {params.INDEX_FILE} \
+                                --window {wildcards.windowSize} \
+                                --quiet \
+                                --timing-output {params.INDEX_TIME} \
+                                --threads {threads}
+        """
+
+rule raptor_search:
+    input:
+        "raptor_binary_checked",
+        "output_checked",
+        "input_file_{binCount}_checked",
+        f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}_{config["RAPTOR_CONFIG"]["LAYOUT"]}_build'
+    output:
+        temp(touch(f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}_search'))
+    threads:
+        config["RAPTOR_CONFIG"]["NUM_THREADS"]
+    params:
+        RAPTOR_BINARY = config["RAPTOR_BINARY"],
+        INPUT_DIR = config["INPUT_DIR"],
+        INDEX_FILE = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.index',
+        RESULT_FILE = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.out',
+        RESULT_TIME = f'{config["OUTPUT_DIR"]}/{config["DIRECTORY_STRUCTURE"]}.out.time',
+        QUERY_LENGTH = config["DEFAULT_READ_CONFIG"]["QUERY_LENGTH"],
+        QUERY_ERRORS = config["DEFAULT_READ_CONFIG"]["QUERY_ERRORS"],
+    shell:
+        """
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor search for {wildcards.binCount} bins."
+        {params.RAPTOR_BINARY} search --index {params.INDEX_FILE} \
+                                --query {params.INPUT_DIR}/{wildcards.binCount}/reads_e{params.QUERY_ERRORS}_{params.QUERY_LENGTH}/all.fastq \
+                                --output {params.RESULT_FILE} \
+                                --error {params.QUERY_ERRORS} \
+                                --query_length {params.QUERY_LENGTH} \
+                                --quiet \
+                                --timing-output {params.RESULT_TIME} \
+                                --threads {threads}
+        """

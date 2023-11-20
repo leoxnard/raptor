@@ -1,0 +1,70 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count
+---------  -------
+all              1
+run_input        3
+total            4
+
+Select jobs to execute...
+
+[Fri Nov 17 17:58:11 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemakes/1024.out
+    jobid: 1
+    reason: Missing output files: /srv/data/leonard/test_run_snakemakes/1024.out
+    wildcards: bin_count=1024
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemakes/1024.out.
+[Fri Nov 17 17:58:11 2023]
+Finished job 1.
+1 of 4 steps (25%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:58:11 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemakes/4096.out
+    jobid: 3
+    reason: Missing output files: /srv/data/leonard/test_run_snakemakes/4096.out
+    wildcards: bin_count=4096
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemakes/4096.out.
+[Fri Nov 17 17:58:11 2023]
+Finished job 3.
+2 of 4 steps (50%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:58:11 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemakes/8192.out
+    jobid: 4
+    reason: Missing output files: /srv/data/leonard/test_run_snakemakes/8192.out
+    wildcards: bin_count=8192
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemakes/8192.out.
+[Fri Nov 17 17:58:11 2023]
+Finished job 4.
+3 of 4 steps (75%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:58:11 2023]
+localrule all:
+    input: /srv/data/leonard/test_run_snakemakes/1024.out, /srv/data/leonard/test_run_snakemakes/2048.out, /srv/data/leonard/test_run_snakemakes/4096.out, /srv/data/leonard/test_run_snakemakes/8192.out
+    jobid: 0
+    reason: Input files updated by another job: /srv/data/leonard/test_run_snakemakes/8192.out, /srv/data/leonard/test_run_snakemakes/1024.out, /srv/data/leonard/test_run_snakemakes/4096.out
+    resources: tmpdir=/tmp
+
+[Fri Nov 17 17:58:11 2023]
+Finished job 0.
+4 of 4 steps (100%) done
+Removing temporary output /srv/data/leonard/test_run_snakemakes/1024.out.
+Removing temporary output /srv/data/leonard/test_run_snakemakes/2048.out.
+Removing temporary output /srv/data/leonard/test_run_snakemakes/4096.out.
+Removing temporary output /srv/data/leonard/test_run_snakemakes/8192.out.
+Complete log: .snakemake/log/2023-11-17T175810.826956.snakemake.log

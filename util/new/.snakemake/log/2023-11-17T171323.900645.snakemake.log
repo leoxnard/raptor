@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count
+---------  -------
+all              1
+run_input        4
+total            5
+
+Select jobs to execute...
+
+[Fri Nov 17 17:13:24 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemake/2048.out
+    jobid: 2
+    reason: Missing output files: /srv/data/leonard/test_run_snakemake/2048.out
+    wildcards: bin_count=2048
+    resources: tmpdir=/tmp
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule run_input in file /srv/public/leonard/raptor/util/new/Snakefile, line 35:
+Job 2  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+/srv/data/leonard/test_run_snakemake/2048.out
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-11-17T171323.900645.snakemake.log

@@ -1,0 +1,36 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count
+----------  -------
+result            1
+run_raptor        4
+total             5
+
+Select jobs to execute...
+
+[Fri Nov 17 20:06:52 2023]
+rule run_raptor:
+    input: raptor_binary_checked, output_checked, input_file_8192_checked
+    output: /srv/data/leonard/test_run/8192_raptor_run
+    jobid: 9
+    reason: Missing output files: /srv/data/leonard/test_run/8192_raptor_run
+    wildcards: bin_count=8192
+    resources: tmpdir=/tmp
+
+RuleException in rule run_raptor in file /srv/public/leonard/raptor/util/new/Snakefile, line 58:
+AttributeError: 'Wildcards' object has no attribute 'BIN_COUNT', when formatting the following:
+
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor layout for ${wildcards.BIN_COUNT} bins."
+        # Raptor layout doesn't provide `--timing-output`, so we use /usr/bin/time with a custom format
+        /usr/bin/time -o {LAYOUT_TIME} -f "wall_clock_time_in_seconds	peak_memory_usage_in_kibibytes
+%e	%M"         ${RAPTOR_BINARY} layout --input {INPUT_DIR}/${wildcards.BIN_COUNT}.filenames                                 --output {LAYOUT_FILE}                                 --kmer {KMER_SIZE}                                 --fpr {MAXIMUM_FPR}                                 --relaxed-fpr {RELAXED_FPR}                                 --hash {NUM_HASHES}                                 --disable-estimate-union                                 --disable-rearrangement                                 --threads {NUM_THREADS}
+
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor build for ${wildcards.BIN_COUNT} bins."
+        ${RAPTOR_BINARY} build  --input ${LAYOUT_FILE}                                 --output ${INDEX_FILE}                                 --window ${WINDOW_SIZE}                                 --quiet                                 --timing-output ${INDEX_TIME}                                 --threads ${NUM_THREADS}
+
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor search for ${wildcards.BIN_COUNT} bins."
+        ${RAPTOR_BINARY} search --index ${INDEX_FILE}                                 --query ${INPUT_DIR}/${wildcards.BIN_COUNT}/reads_e${QUERY_ERRORS}_${QUERY_LENGTH}/all.fastq                                 --output ${RESULT_FILE}                                 --error ${QUERY_ERRORS}                                 --query_length ${QUERY_LENGTH}                                 --quiet                                 --timing-output ${RESULT_TIME}                                 --threads ${NUM_THREADS}
+        

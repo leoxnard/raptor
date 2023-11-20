@@ -1,0 +1,8 @@
+Building DAG of jobs...
+InputFunctionException in rule run_raptor in file /srv/public/leonard/raptor/util/new/Snakefile, line 28:
+Error:
+  TypeError: unsupported operand type(s) for ** or pow(): 'int' and 'str'
+Wildcards:
+  bin_count=1024
+Traceback:
+  File "/srv/public/leonard/raptor/util/new/Snakefile", line 35, in <lambda>

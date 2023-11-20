@@ -1,0 +1,3 @@
+KeyError in file /srv/public/leonard/raptor/util/new/Snakefile, line 74:
+'KMER_SIZE'
+  File "/srv/public/leonard/raptor/util/new/Snakefile", line 74, in <module>

@@ -1,0 +1,312 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+check_input_files              4
+check_output_dir               1
+check_raptor_binary            1
+raptor_build_withLayout        4
+raptor_layout                  4
+raptor_search                  4
+total                         19
+
+Select jobs to execute...
+
+[Mon Nov 20 20:04:24 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_layout
+    jobid: 6
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=1024
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_layout.
+[Mon Nov 20 20:04:26 2023]
+Finished job 6.
+1 of 19 steps (5%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:04:26 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_layout
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_withLayout_build
+    jobid: 5
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=1024
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_withLayout_build.
+[Mon Nov 20 20:04:55 2023]
+Finished job 5.
+2 of 19 steps (11%) done
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:04:55 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_layout
+    jobid: 14
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=4096
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_layout.
+[Mon Nov 20 20:04:57 2023]
+Finished job 14.
+3 of 19 steps (16%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:04:57 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_layout
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_withLayout_build
+    jobid: 13
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=4096
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_withLayout_build.
+[Mon Nov 20 20:05:27 2023]
+Finished job 13.
+4 of 19 steps (21%) done
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:05:27 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_layout
+    jobid: 18
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=8192
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_layout.
+[Mon Nov 20 20:05:31 2023]
+Finished job 18.
+5 of 19 steps (26%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:05:31 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_layout
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_withLayout_build
+    jobid: 17
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=8192
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_withLayout_build.
+[Mon Nov 20 20:05:47 2023]
+Finished job 17.
+6 of 19 steps (32%) done
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:05:47 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_layout
+    jobid: 10
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_layout.
+[Mon Nov 20 20:05:48 2023]
+Finished job 10.
+7 of 19 steps (37%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:05:48 2023]
+rule raptor_build_withLayout:
+    input: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_layout
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_withLayout_build
+    jobid: 9
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_withLayout_build; Input files updated by another job: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_layout
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_withLayout_build.
+[Mon Nov 20 20:06:18 2023]
+Finished job 9.
+8 of 19 steps (42%) done
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_layout.
+Select jobs to execute...
+
+[Mon Nov 20 20:06:18 2023]
+rule check_output_dir:
+    output: output_checked
+    jobid: 3
+    reason: Missing output files: output_checked
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:06:18 2023]
+rule check_raptor_binary:
+    output: raptor_binary_checked
+    jobid: 2
+    reason: Missing output files: raptor_binary_checked; Params have changed since last execution
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:06:18 2023]
+rule check_input_files:
+    output: input_file_2048_checked
+    jobid: 8
+    reason: Missing output files: input_file_2048_checked; Code has changed since last execution
+    wildcards: binCount=2048
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:06:18 2023]
+rule check_input_files:
+    output: input_file_1024_checked
+    jobid: 4
+    reason: Missing output files: input_file_1024_checked; Code has changed since last execution
+    wildcards: binCount=1024
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:06:18 2023]
+rule check_input_files:
+    output: input_file_4096_checked
+    jobid: 12
+    reason: Missing output files: input_file_4096_checked; Code has changed since last execution
+    wildcards: binCount=4096
+    resources: tmpdir=/tmp
+
+
+[Mon Nov 20 20:06:18 2023]
+rule check_input_files:
+    output: input_file_8192_checked
+    jobid: 16
+    reason: Missing output files: input_file_8192_checked; Code has changed since last execution
+    wildcards: binCount=8192
+    resources: tmpdir=/tmp
+
+Touching output file output_checked.
+[Mon Nov 20 20:06:18 2023]
+Finished job 3.
+9 of 19 steps (47%) done
+Touching output file input_file_2048_checked.
+[Mon Nov 20 20:06:18 2023]
+Finished job 8.
+10 of 19 steps (53%) done
+Touching output file input_file_4096_checked.
+[Mon Nov 20 20:06:18 2023]
+Finished job 12.
+11 of 19 steps (58%) done
+Touching output file input_file_1024_checked.
+[Mon Nov 20 20:06:18 2023]
+Finished job 4.
+12 of 19 steps (63%) done
+Touching output file input_file_8192_checked.
+[Mon Nov 20 20:06:18 2023]
+Finished job 16.
+13 of 19 steps (68%) done
+Touching output file raptor_binary_checked.
+[Mon Nov 20 20:06:18 2023]
+Finished job 2.
+14 of 19 steps (74%) done
+Select jobs to execute...
+
+[Mon Nov 20 20:06:18 2023]
+rule raptor_search:
+    input: raptor_binary_checked, output_checked, input_file_2048_checked, /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_withLayout_build
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_search
+    jobid: 7
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_search; Input files updated by another job: /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_withLayout_build, input_file_2048_checked, output_checked, raptor_binary_checked
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=2048
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_search.
+[Mon Nov 20 20:06:23 2023]
+Finished job 7.
+15 of 19 steps (79%) done
+Removing temporary output input_file_2048_checked.
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_withLayout_build.
+Select jobs to execute...
+
+[Mon Nov 20 20:06:23 2023]
+rule raptor_search:
+    input: raptor_binary_checked, output_checked, input_file_1024_checked, /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_withLayout_build
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_search
+    jobid: 1
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_search; Input files updated by another job: input_file_1024_checked, /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_withLayout_build, output_checked, raptor_binary_checked
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=1024
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_search.
+[Mon Nov 20 20:06:27 2023]
+Finished job 1.
+16 of 19 steps (84%) done
+Removing temporary output input_file_1024_checked.
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_withLayout_build.
+Select jobs to execute...
+
+[Mon Nov 20 20:06:27 2023]
+rule raptor_search:
+    input: raptor_binary_checked, output_checked, input_file_8192_checked, /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_withLayout_build
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_search
+    jobid: 15
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_search; Input files updated by another job: input_file_8192_checked, /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_withLayout_build, output_checked, raptor_binary_checked
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=8192
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_search.
+[Mon Nov 20 20:06:32 2023]
+Finished job 15.
+17 of 19 steps (89%) done
+Removing temporary output input_file_8192_checked.
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_withLayout_build.
+Select jobs to execute...
+
+[Mon Nov 20 20:06:32 2023]
+rule raptor_search:
+    input: raptor_binary_checked, output_checked, input_file_4096_checked, /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_withLayout_build
+    output: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_search
+    jobid: 11
+    reason: Missing output files: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_search; Input files updated by another job: /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_withLayout_build, output_checked, input_file_4096_checked, raptor_binary_checked
+    wildcards: kmerSize=32, windowSize=32, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=4096
+    threads: 32
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_search.
+[Mon Nov 20 20:06:36 2023]
+Finished job 11.
+18 of 19 steps (95%) done
+Removing temporary output raptor_binary_checked.
+Removing temporary output output_checked.
+Removing temporary output input_file_4096_checked.
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_withLayout_build.
+Select jobs to execute...
+
+[Mon Nov 20 20:06:36 2023]
+localrule all:
+    input: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_search, /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_search, /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_search, /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_search
+    jobid: 0
+    reason: Input files updated by another job: /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_search, /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_search, /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_search, /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_search
+    resources: tmpdir=/tmp
+
+[Mon Nov 20 20:06:36 2023]
+Finished job 0.
+19 of 19 steps (100%) done
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/1024_search.
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/2048_search.
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/4096_search.
+Removing temporary output /srv/data/leonard/test_run/32/32/0-05/0-3/2/8192_search.
+Complete log: .snakemake/log/2023-11-20T200424.046343.snakemake.log

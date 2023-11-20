@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule all in file /srv/public/leonard/raptor/util/new/Snakefile, line 5:
+Missing input files for rule all:
+    affected files:
+        raptor_binary_checked
+        output_checked

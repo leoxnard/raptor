@@ -1,0 +1,110 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                       count
+----------------------  -------
+all                           1
+check_output_directory        1
+check_raptor_binary           1
+run_input                     4
+total                         7
+
+Select jobs to execute...
+
+[Fri Nov 17 17:17:27 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemake/2048.out
+    jobid: 4
+    reason: Missing output files: /srv/data/leonard/test_run_snakemake/2048.out
+    wildcards: bin_count=2048
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemake/2048.out.
+[Fri Nov 17 17:17:27 2023]
+Finished job 4.
+1 of 7 steps (14%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:17:27 2023]
+rule check_raptor_binary:
+    output: raptor_binary_checked
+    jobid: 2
+    reason: Missing output files: raptor_binary_checked
+    resources: tmpdir=/tmp
+
+Touching output file raptor_binary_checked.
+[Fri Nov 17 17:17:27 2023]
+Finished job 2.
+2 of 7 steps (29%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:17:27 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemake/4096.out
+    jobid: 5
+    reason: Missing output files: /srv/data/leonard/test_run_snakemake/4096.out
+    wildcards: bin_count=4096
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemake/4096.out.
+[Fri Nov 17 17:17:27 2023]
+Finished job 5.
+3 of 7 steps (43%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:17:27 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemake/8192.out
+    jobid: 6
+    reason: Missing output files: /srv/data/leonard/test_run_snakemake/8192.out
+    wildcards: bin_count=8192
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemake/8192.out.
+[Fri Nov 17 17:17:27 2023]
+Finished job 6.
+4 of 7 steps (57%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:17:27 2023]
+rule run_input:
+    output: /srv/data/leonard/test_run_snakemake/1024.out
+    jobid: 3
+    reason: Missing output files: /srv/data/leonard/test_run_snakemake/1024.out
+    wildcards: bin_count=1024
+    resources: tmpdir=/tmp
+
+Touching output file /srv/data/leonard/test_run_snakemake/1024.out.
+[Fri Nov 17 17:17:27 2023]
+Finished job 3.
+5 of 7 steps (71%) done
+Select jobs to execute...
+
+[Fri Nov 17 17:17:27 2023]
+rule check_output_directory:
+    output: output_checked
+    jobid: 1
+    reason: Missing output files: output_checked
+    resources: tmpdir=/tmp
+
+[Fri Nov 17 17:17:27 2023]
+Error in rule check_output_directory:
+    jobid: 1
+    output: output_checked
+    shell:
+        
+        if [ -d "/pfad/zum/verzeichnis" ]; then
+            echo "Das Verzeichnis existiert."
+        else
+            echo "Das Verzeichnis existiert nicht."
+            exit 1
+        fi
+        touch output_checked
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-11-17T171726.499391.snakemake.log

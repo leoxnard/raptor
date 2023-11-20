@@ -1,0 +1,8 @@
+Building DAG of jobs...
+MissingInputException in rule run_raptor in file /srv/public/leonard/raptor/util/new/Snakefile, line 28:
+Missing input files for rule run_raptor:
+    output: /srv/data/leonard/test_run/1024.out
+    wildcards: bin_count=1024
+    affected files:
+        /srv/data/leonard/test_run/1024.layout
+        /srv/data/leonard/test_run/1024.index
