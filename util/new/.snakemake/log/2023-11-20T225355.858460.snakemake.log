@@ -1,0 +1,113 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+check_input_files              4
+check_output_dir               1
+check_raptor_binary            1
+raptor_build_withLayout        4
+raptor_layout                  4
+raptor_search                  4
+total                         19
+
+Select jobs to execute...
+
+[Mon Nov 20 22:53:57 2023]
+rule check_input_files:
+    output: input_file_8192_checked
+    jobid: 16
+    reason: Missing output files: input_file_8192_checked
+    wildcards: binCount=8192
+    resources: tmpdir=/tmp
+
+Touching output file input_file_8192_checked.
+[Mon Nov 20 22:53:57 2023]
+Finished job 16.
+1 of 19 steps (5%) done
+Select jobs to execute...
+
+[Mon Nov 20 22:53:57 2023]
+rule check_input_files:
+    output: input_file_4096_checked
+    jobid: 12
+    reason: Missing output files: input_file_4096_checked
+    wildcards: binCount=4096
+    resources: tmpdir=/tmp
+
+Touching output file input_file_4096_checked.
+[Mon Nov 20 22:53:57 2023]
+Finished job 12.
+2 of 19 steps (11%) done
+Select jobs to execute...
+
+[Mon Nov 20 22:53:57 2023]
+rule check_input_files:
+    output: input_file_1024_checked
+    jobid: 4
+    reason: Missing output files: input_file_1024_checked
+    wildcards: binCount=1024
+    resources: tmpdir=/tmp
+
+Touching output file input_file_1024_checked.
+[Mon Nov 20 22:53:57 2023]
+Finished job 4.
+3 of 19 steps (16%) done
+Select jobs to execute...
+
+[Mon Nov 20 22:53:57 2023]
+rule check_input_files:
+    output: input_file_2048_checked
+    jobid: 8
+    reason: Missing output files: input_file_2048_checked
+    wildcards: binCount=2048
+    resources: tmpdir=/tmp
+
+Touching output file input_file_2048_checked.
+[Mon Nov 20 22:53:57 2023]
+Finished job 8.
+4 of 19 steps (21%) done
+Select jobs to execute...
+
+[Mon Nov 20 22:53:57 2023]
+rule check_raptor_binary:
+    output: raptor_binary_checked
+    jobid: 2
+    reason: Missing output files: raptor_binary_checked
+    resources: tmpdir=/tmp
+
+Touching output file raptor_binary_checked.
+[Mon Nov 20 22:53:57 2023]
+Finished job 2.
+5 of 19 steps (26%) done
+Select jobs to execute...
+
+[Mon Nov 20 22:53:57 2023]
+rule raptor_layout:
+    output: /srv/data/leonard/test_run/kmer_35/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout
+    jobid: 6
+    reason: Missing output files: /srv/data/leonard/test_run/kmer_35/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout
+    wildcards: kmerSize=35, windowSize=35, maximumFPR=0-05, relaxedFPR=0-3, numHashes=2, binCount=1024
+    resources: tmpdir=/tmp
+
+[Mon Nov 20 22:53:57 2023]
+Error in rule raptor_layout:
+    jobid: 6
+    output: /srv/data/leonard/test_run/kmer_35/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024_layout
+    shell:
+        
+        echo "[$(date +"%Y-%m-%d %T")] Running raptor layout for 1024 bins."
+        relaxed_fpr=$(echo "0-3" | sed 's/-/./g')
+        maximum_fpr=$(echo "0-05" | sed 's/-/./g')
+        # Raptor layout doesn't provide `--timing-output`, so we use /usr/bin/time with a custom format
+        /usr/bin/time -o /srv/data/leonard/test_run/kmer_35/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024.layout.time -f "wall_clock_time_in_seconds	peak_memory_usage_in_kibibytes
+%e	%M"         /srv/public/leonard/raptor/build/bin/raptor layout --input /srv/data/seiler/simulation/1024.filenames                                 --output /srv/data/leonard/test_run/kmer_35/windowSize_35/maximumFPR_0-05/relaxedFPR_0-3/numHashes_2/1024.layout                                 --kmer 35                                 --fpr $maximum_fpr                                 --relaxed-fpr $relaxed_fpr                                 --hash 2                                 --disable-estimate-union                                 --disable-rearrangement                                 --threads 1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-11-20T225355.858460.snakemake.log
