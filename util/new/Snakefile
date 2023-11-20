@@ -9,6 +9,8 @@ rule all:
                                 relaxedFPR=[str(fpr).replace('.', '-') for fpr in config["RAPTOR_CONFIG"]["RELAXED_FPR"]],
                                 numHashes=config["RAPTOR_CONFIG"]["NUM_HASHES"],
                                 binCount=[2**exp for exp in range(config["BIN_COUNT_RANGE"]["MIN_EXPONENT"], config["BIN_COUNT_RANGE"]["MAX_EXPONENT"] + 1)])
+    threads:
+        config["RAPTOR_CONFIG"]["NUM_THREADS"]
 
 rule check_output_dir:
     output:

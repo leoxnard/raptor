@@ -1,16 +1,17 @@
 RAPTOR_BINARY: "/srv/public/leonard/raptor/build/bin/raptor"
 INPUT_DIR: "/srv/data/seiler/simulation"
 OUTPUT_DIR: "/srv/data/leonard/test_run"
+#DIRECTORY_STRUCTURE: "kmer_{kmerSize}_windowSize_{windowSize}_maximumFPR_{maximumFPR}_relaxedFPR_{relaxedFPR}_numHashes_{numHashes}_{binCount}"
 DIRECTORY_STRUCTURE: "kmer_{kmerSize}/windowSize_{windowSize}/maximumFPR_{maximumFPR}/relaxedFPR_{relaxedFPR}/numHashes_{numHashes}/{binCount}"
 
 RAPTOR_CONFIG:
-  KMER_SIZE: [35]
-  WINDOW_SIZE: [35]
+  KMER_SIZE: [32]
+  WINDOW_SIZE: [32]
   NUM_THREADS: 32
   MAXIMUM_FPR: [0.05]
   RELAXED_FPR: [0.3]
   NUM_HASHES: [2]
-  LAYOUT: "withLayout" # withLayout or noLayout
+  LAYOUT: "noLayout" # withLayout or noLayout
 
 DEFAULT_READ_CONFIG:
   QUERY_LENGTH: 250
@@ -19,5 +20,3 @@ DEFAULT_READ_CONFIG:
 BIN_COUNT_RANGE:
   MIN_EXPONENT: 10
   MAX_EXPONENT: 13
-
-#DIRECTORY_STRUCTURE: "{{kmerSize}}/{{windowSize}}/{{maximumFPR}}/{{relaxedFPR}}/{{numHashes}}/{{binCount}}"
